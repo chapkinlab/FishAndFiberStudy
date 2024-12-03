@@ -1,5 +1,5 @@
 ## Lampe Fish & Fiber Study
-## This code is for combining all of the libraries for each sample.
+## This code is for combining all libraries for each sample.
 ## Code last updated December 2nd, 2024 by Destiny Mullens
 
 library(dplyr)
