@@ -1,0 +1,50 @@
+# Project: Project1
+# Makefile created by Dev-C++ 4.9.9.2
+
+CPP  = /usr/bin/g++
+CC   = /usr/bin/gcc
+WINDRES = windres.exe
+RES  = 
+OBJ  = bresub_lda.o err_lda.o lda.o main.o mean_min_dist.o resub_lda.o test_lda.o util.o $(RES)
+LINKOBJ  = bresub_lda.o err_lda.o lda.o  main.o mean_min_dist.o resub_lda.o test_lda.o util.o $(RES)
+LIBS =  -L"C:/Dev-Cpp/lib"  
+INCS =  -I"C:/Dev-Cpp/include" 
+CXXINCS =  -I"C:/Dev-Cpp/lib/gcc/mingw32/3.4.2/include"  -I"C:/Dev-Cpp/include/c++/3.4.2/backward"  -I"C:/Dev-Cpp/include/c++/3.4.2/mingw32"  -I"C:/Dev-Cpp/include/c++/3.4.2"  -I"C:/Dev-Cpp/include" 
+BIN  = ThreeFeatureLDA
+CXXFLAGS = $(CXXINCS)  
+CFLAGS = $(INCS)  
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before ThreeFeatureLDA all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o "ThreeFeatureLDA.exe" $(LIBS)
+
+bresub_lda.o: bresub_lda.c
+	$(CC) -c bresub_lda.c -o bresub_lda.o $(CFLAGS)
+
+err_lda.o: err_lda.c
+	$(CC) -c err_lda.c -o err_lda.o $(CFLAGS)
+
+lda.o: lda.c
+	$(CC) -c lda.c -o lda.o $(CFLAGS)
+
+main.o: main.c
+	$(CC) -c main.c -o main.o $(CFLAGS)
+
+mean_min_dist.o: mean_min_dist.c
+	$(CC) -c mean_min_dist.c -o mean_min_dist.o $(CFLAGS)
+
+resub_lda.o: resub_lda.c
+	$(CC) -c resub_lda.c -o resub_lda.o $(CFLAGS)
+
+test_lda.o: test_lda.c
+	$(CC) -c test_lda.c -o test_lda.o $(CFLAGS)
+
+util.o: util.c
+	$(CC) -c util.c -o util.o $(CFLAGS)
