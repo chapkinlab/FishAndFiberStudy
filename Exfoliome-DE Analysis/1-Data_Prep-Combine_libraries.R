@@ -42,10 +42,10 @@ sample.list$New.Names[1:2] <- c("Ensembl.ID","Gene.Name")
 ## Repace names
 names(counts.new) <- sample.list$New.Names
 
-write.csv(counts.new,"../Working_Data/Counts/LFF-uncombined-raw-counts-all-batches-12022024.csv",row.names = FALSE)
+write.csv(counts.new,"../Working_Data/Counts/LFF-uncombined-raw-counts-all-batches-.csv",row.names = FALSE)
 ###########################################################
 ## Combine libraries for each sample
-counts <- read.csv("../Working_Data/Counts/LFF-uncombined-raw-counts-all-batches-12022024.csv",sep = ',')
+counts <- read.csv("../Working_Data/Counts/LFF-uncombined-raw-counts-all-batches.csv",sep = ',')
 ## Get Gene Name & Ensembl.ID info for new data frame for combined libaries
 new.counts <- data.frame(counts[,1:2])
 
@@ -75,5 +75,5 @@ samples.to.drop <- c('LFF.53029','LFF.53048','LFF.53152','LFF.53096','LFF.53061'
 new.counts <- new.counts %>% dplyr::select(.,-starts_with(samples.to.drop))
 
 ## Save data frame with combined libraries
-write.csv(new.counts,"../Working_Data/Counts/LFF-raw-counts-all-combined-12022024.csv",row.names = FALSE)
-saveRDS(new.counts,"../Working_Data/Counts/LFF-raw-counts-all-combined-12022024.rds")
+write.csv(new.counts,"../Working_Data/Counts/LFF-raw-counts-all-combined.csv",row.names = FALSE)
+saveRDS(new.counts,"../Working_Data/Counts/LFF-raw-counts-all-combined.rds")

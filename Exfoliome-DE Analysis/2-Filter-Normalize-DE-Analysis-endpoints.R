@@ -6,7 +6,7 @@ library(dplyr)
 library(tibble)
 
 ## Import counts
-counts <- read.csv("../Working_Data/Counts/LFF-raw-counts-all-combined-12022024.csv") %>% 
+counts <- read.csv("../Working_Data/Counts/LFF-raw-counts-all-combined.csv") %>% 
   column_to_rownames(var = "Ensembl.ID") %>%              ## Move Ensembl ID's to row name
   dplyr::select(.,-Gene.Name) %>%                         ## Remove column with Gene names
   filter(.,rowSums(.)!=0) %>%                             ## Filter out genes with no counts in any sample
@@ -44,7 +44,7 @@ filtered.counts <- counts[features.to.keep,] %>%                                
   na.omit() %>% as.data.frame()                                                   ## Omit any NA's and make a dataframe
 
 ## Save raw, filtered counts
-write.csv(filtered.counts,"../Working_Data/Counts/Raw-filtered-counts-endpoints-73percent-20cpm-12022024.csv")
+write.csv(filtered.counts,"../Working_Data/Counts/Raw-filtered-counts-endpoints-73percent-20cpm.csv")
 
 ###################### DE Analysis ######################
 
@@ -77,7 +77,7 @@ y <- calcNormFactors(y, method = "TMM")
 TMM.norm <- cpm(y,log = FALSE) %>% round() %>% as.data.frame()
 
 ## Save normalized counts for other analyses
-write.csv(TMM.norm,"../Working_Data/Counts/Norm-Counts-endpoints-73percent-20cpm-12022024.csv",row.names = TRUE)
+write.csv(TMM.norm,"../Working_Data/Counts/Norm-Counts-endpoints-73percent-20cpm.csv",row.names = TRUE)
 
 ## Estimate dispersion
 y <- estimateDisp(y, design, robust = TRUE)
@@ -93,7 +93,7 @@ topTags(qlf,n=50)
 out1q <- topTags(qlf,n=nrow(filtered.counts),sort.by="PValue")$table
 out2q <- out1q[order(out1q$FDR),] # Sort by ascending FDR
 out2q$FC <- 2^(out1q$logFC)
-genes <- counts <- read.csv("../Working_Data/Counts/LFF-raw-counts-all-combined-12022024.csv")[,c(1:2)]
+genes <- counts <- read.csv("../Working_Data/Counts/LFF-raw-counts-all-combined.csv")[,c(1:2)]
 out2q <- left_join(rownames_to_column(out2q,var = "Ensembl.ID"),genes)
 out2q <- out2q[,c("Ensembl.ID","Gene.Name","FC","logFC","logCPM","F","PValue","FDR")]
-write.csv(out2q,"LFF-paired_AvB-endpoints-QLF-12022024.csv")
+write.csv(out2q,"LFF-paired_AvB-endpoints-QLF.csv")
