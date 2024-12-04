@@ -1,10 +1,16 @@
-# **Exfoliome-DE Analysis**
+# **LDA Analysis**
 
-**1-Data_Prep-Combine_libraries:**
-Contains code for combining sample libraries.
+**1_LDA-input-file-endpoints:**
+Code for formatting normalized counts for LDA analysis for the endpoint data.
 
-**2-Filter-Normalize-DE-Analysis-endpoints:**
-Contains code for filtering raw counts, normalizing counts and differential expression analysis for the endpoint data.
+**1_LDA-input-file-midpoints:**
+Code for formatting normalized counts for LDA analysis for the midpoint data.
 
-**2-Filter-Normalize-DE-Analysis-midpoints:**
-Contains code for filtering raw counts, normalizing counts and differential expression analysis for the midpoint data.
+**2_LDA-Annotation-endpoints:**
+Code for annotating LDA results for the endpoint data.
+
+**2_LDA-Annotation-midpoints:**
+Code for annotating LDA results for the midpoint data.
+
+**3_LDA_High_Frequency_Classifiers:**
+Code for determining and plotting LDA High frequency classifiers.
